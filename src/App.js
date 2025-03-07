@@ -49,7 +49,7 @@ function App() {
 
 
   return (
-    <div className="w-screen min-h-screen bg-richblack-900 flex flex-col font-inter" data-theme="pastel">
+    <div className="w-screen min-h-screen bg-richblack-900 flex flex-col font-inter" data-theme="cyberpunk">
     <Navbar/>
     <Routes>
       <Route path="/" element={<Home/>} />
