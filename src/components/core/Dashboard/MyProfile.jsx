@@ -27,7 +27,7 @@ const MyProfile = () => {
         {/* section1 */}
         <div className='flex bg-richblack-800 p-6 rounded-md items-center justify-between'>
             <div className='flex gap-3 items-center'>
-                <img src={user?.image} className='aspect-square rounded-full w-16 object-cover'/>
+                <img src={user?.image} className='aspect-square rounded-full w-16 object-cover' alt='profile-pic'/>
                 <div className='flex flex-col'>
                     <h2 className='uppercase'>{user?.firstName} {user?.lastName}</h2>
                     <p className='text-richblack-300'>{user?.email}</p>

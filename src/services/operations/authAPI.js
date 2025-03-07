@@ -1,10 +1,12 @@
 import { toast } from "react-hot-toast"
 
-import { setLoading, setToken } from "../../slices/authSlice"
+import { setLoading, setSocket, setToken } from "../../slices/authSlice"
 import { resetCart } from "../../slices/cartSlice"
 import { setUser } from "../../slices/profileSlice"
 import { apiConnector } from "../apiconnector"
 import { categories, endpoints } from "../apis"
+
+import { io } from "socket.io-client";
 
 const {
   SENDOTP_API,
@@ -73,6 +75,7 @@ export function signUp(
       }
       toast.success("Signup Successful")
       navigate("/login")
+      dispatch(connectSocket());
     } catch (error) {
       console.log("SIGNUP API ERROR............", error)
       toast.error("Signup Failed")
@@ -109,6 +112,9 @@ export function login(email, password, navigate) {
       localStorage.setItem("token", JSON.stringify(response.data.token))
       localStorage.setItem("user", JSON.stringify(response.data.user))
       navigate("/dashboard/my-profile")
+
+      dispatch(connectSocket());
+
     } catch (error) {
       console.log("LOGIN API ERROR............", error)
       toast.error("Login Failed")
@@ -127,6 +133,7 @@ export function logout(navigate) {
     localStorage.removeItem("user")
     toast.success("Logged Out")
     navigate("/")
+    dispatch(disconnectSocket());
   }
 }
 
@@ -175,6 +182,44 @@ export function resetPassword(password, confirmPassword, token) {
       toast.error("Unable to reset password");
     }
     dispatch(setLoading(false));
+  }
+}
+
+export function connectSocket() {
+  return (dispatch, getState) => {
+    const { user } = getState().profile;  // Directly access the user in profile slice
+
+    if (!user || getState().auth.socket?.connected) {
+      console.log("User not logged in, not connecting to socket.");
+      return;
+    }
+
+    const socket = io("http://localhost:4000", {
+      query: { userId: user._id },
+    });
+
+    socket.connect();
+
+    dispatch(setSocket(socket));
+
+    socket.on("connect", () => {
+      console.log("Socket connected:", socket.id);
+    });
+
+    socket.on("disconnect", () => {
+      console.log("Socket disconnected");
+    });
+  };
+}
+
+export function disconnectSocket(){
+  return (dispatch,getState) => {
+    const socket = getState().auth.socket;
+
+    if(socket?.connected){
+      socket.disconnect();
+      dispatch(setSocket(null));
+    }
   }
 }
 

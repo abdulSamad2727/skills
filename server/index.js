@@ -1,5 +1,5 @@
-const express = require("express");
-const app = express();
+const express = require('express');
+const {app,server} = require("../server/lib/socket");
 
 const userRoutes = require("./routes/User");
 const profileRoutes = require("./routes/Profile");
@@ -12,7 +12,7 @@ const cors = require("cors");
 const {cloudinaryConnect } = require("./config/cloudinary");
 const fileUpload = require("express-fileupload");
 const dotenv = require("dotenv");
-
+const messageRoutes = require('./routes/Message');
 dotenv.config();
 const PORT = process.env.PORT || 4000;
 
@@ -21,12 +21,14 @@ database.connect();
 //middlewares
 app.use(express.json());
 app.use(cookieParser());
+
 app.use(
-	cors({
-		origin:"http://localhost:3000",
-		credentials:true,
-	})
-)
+  cors({
+    origin: "http://localhost:3000", // Frontend URL
+    credentials: true, // Yeh compulsory hai cookie bhejne ke liye
+  })
+);
+
 
 app.use(
 	fileUpload({
@@ -43,6 +45,7 @@ app.use("/api/v1/profile", profileRoutes);
 app.use("/api/v1/course", courseRoutes);
 app.use("/api/v1/payment", paymentRoutes);
 app.use("/api/v1/reach", contactUsRoute);
+app.use("/api/v1/messages",messageRoutes);
 
 //def route
 
@@ -53,6 +56,6 @@ app.get("/", (req, res) => {
 	});
 });
 
-app.listen(PORT, () => {
+server.listen(PORT, () => {
 	console.log(`App is running at ${PORT}`)
 })
