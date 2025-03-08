@@ -1,11 +1,10 @@
 // import { FcGoogle } from "react-icons/fc"
 import { useSelector } from "react-redux"
-
-import frameImg from "../../../assets/Images/frame.png"
 import LoginForm from "./LoginForm"
 import SignupForm from "./SignupForm"
 import Spinner from "../../common/Spinner"
 import AuthImagePattern from "../../common/AuthImagePattern"
+import { ColourfulTextDemo } from "../../aceternity/ColourfulTextDemo"
 
 function Template({ title, description1, description2, image, formType }) {
   const { loading } = useSelector((state) => state.auth)
@@ -31,23 +30,8 @@ function Template({ title, description1, description2, image, formType }) {
           <div className=" mx-auto w-11/12 max-w-[450px] md:mx-0">
           <AuthImagePattern
             title={"Welcome back!"}
-            subtitle={"Sign in to continue your conversations and catch up with your messages."}
+            subtitle={"SkillShiksha is an innovative learning platform that offers a seamless and engaging experience for learners"}
           />
-            {/* <img
-              src={frameImg}
-              alt="Pattern"
-              width={558}
-              height={504}
-              loading="lazy"
-            />
-            <img
-              src={image}
-              alt="Students"
-              width={558}
-              height={504}
-              loading="lazy"
-              className="absolute -top-4 right-4 z-10"
-            /> */}
           </div>
         </div>
       )}
