@@ -31,6 +31,7 @@ import MyCourses from "./components/core/Dashboard/MyCourses";
 import EditCourse from "./components/core/Dashboard/EditCourse.jsx";
 import Catalog from "./pages/Catalog.jsx";
 import Chat from "./pages/Chat.jsx";
+import CourseDetails from "./pages/CourseDetails.jsx";
 // import AddCourse from "./components/core/Dashboard/AddCourse";
 // import MyCourses from "./components/core/Dashboard/MyCourses";
 // import EditCourse from "./components/core/Dashboard/EditCourse";
@@ -57,6 +58,8 @@ function App() {
       <Route path="courses/:courseId" element={<CourseDetails/>} /> */}
       
       <Route path="catalog/:catalogName" element={<Catalog/>}/>
+      <Route path="courses/:courseId" element={<CourseDetails/>}/>
+
       <Route
           path="signup"
           element={
