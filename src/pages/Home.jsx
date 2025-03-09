@@ -9,11 +9,14 @@ import { PlaceholdersAndVanishInputDemo } from '../components/aceternity/Placeho
 import { ThreeDCardDemo } from '../components/aceternity/ThreeDCardDemo';
 import { LensDemo } from '../components/aceternity/LensDemo';
 import { ColourfulTextDemo } from '../components/aceternity/ColourfulTextDemo';
+import SearchBar from '../components/core/HomePage/SearchBar';
 
 const Home = () => {
   return (
     <div>
       {/* Section 1 */}
+
+      <SearchBar/>
       <div
         className='relative mx-auto flex flex-col w-11/12 items-center text-white justify-between max-w-maxContent'
       >
