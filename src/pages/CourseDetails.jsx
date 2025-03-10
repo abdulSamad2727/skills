@@ -15,6 +15,7 @@ import { fetchCourseDetails } from "../services/operations/courseDetailsAPI"
 import { buyCourse } from "../services/operations/studentFeaturesAPI"
 import GetAvgRating from "../utils/avgRating"
 import Error from "./Error"
+import toast from "react-hot-toast";
 
 function CourseDetails() {
   const { user } = useSelector((state) => state.profile)
@@ -102,8 +103,9 @@ function CourseDetails() {
   } = response.data?.courseDetails
 
   const handleBuyCourse = () => {
-    if (token) {
+    if ( token ) {
       buyCourse(token, [courseId], user, navigate, dispatch)
+      // const toastId = toast.success("purchase succesfull") ;
       return
     }
     setConfirmationModal({
