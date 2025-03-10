@@ -229,6 +229,22 @@ exports.getAllCourses = async (req, res) => {
     })
   }
 }
+
+// exports.searchCourse = async (req,res)=>{
+//   try{
+
+//     const { keyword } = req.body;
+
+//     const courses = await find({})
+//   }catch(e){
+//     console.log("Error in searching Course");
+//     return res.status(404).json({
+//       success: false,
+//       message: "Error in searching Course",
+//       error: e.message,
+//     })
+//   }
+// }
 // Get One Single Course Details
 // exports.getCourseDetails = async (req, res) => {
 //   try {
