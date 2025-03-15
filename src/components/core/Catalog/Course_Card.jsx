@@ -27,18 +27,18 @@ const Course_Card = ({course, Height}) => {
             />
           </div>
           <div className="flex flex-col gap-2 px-1 py-3">
-            <p className="text-xl text-richblack-5">{course?.courseName}</p>
-            <p className="text-sm text-richblack-50">
+            <p className="text-xl text-black">{course?.courseName}</p>
+            <p className="text-sm text-black">
               {course?.instructor?.firstName} {course?.instructor?.lastName}
             </p>
             <div className="flex items-center gap-2">
-              <span className="text-yellow-5">{avgReviewCount || 0}</span>
+              <span className="text-orange-800">{avgReviewCount || 0}</span>
               <RatingStars Review_Count={avgReviewCount} />
-              <span className="text-richblack-400">
+              <span className="text-black">
                 {course?.ratingAndReviews?.length} Ratings
               </span>
             </div>
-            <p className="text-xl text-richblack-5">Rs. {course?.price}</p>
+            <p className="text-xl text-black">Rs. {course?.price}</p>
           </div>
         </div>
       </Link>
