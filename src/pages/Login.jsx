@@ -5,6 +5,7 @@ import Template from "../components/core/Auth/Template"
 function Login() {
   return (
     <div className="flex flex-col">
+    
     <Template
       title="Welcome Back"
       description1="Secure Access Made Simple. "

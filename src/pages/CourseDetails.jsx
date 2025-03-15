@@ -16,6 +16,8 @@ import { buyCourse } from "../services/operations/studentFeaturesAPI"
 import GetAvgRating from "../utils/avgRating"
 import Error from "./Error"
 import toast from "react-hot-toast";
+import { ColourfulTextDemo } from "../components/aceternity/ColourfulTextDemo";
+import { CarouselDemo } from "../components/aceternity/CarouselDemo";
 
 function CourseDetails() {
   const { user } = useSelector((state) => state.profile)
@@ -130,6 +132,8 @@ function CourseDetails() {
   return (
     <>
       <div className={`relative w-full bg-richblack-800`}>
+        <CarouselDemo/>
+        <ColourfulTextDemo/>
         {/* Hero Section */}
         <div className="mx-auto box-content px-4 lg:w-[1260px] 2xl:relative ">
           <div className="mx-auto grid min-h-[450px] max-w-maxContentTab justify-items-center py-8 lg:mx-0 lg:justify-items-start lg:py-0 xl:max-w-[810px]">
