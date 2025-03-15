@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from "react"
 import { AiOutlineDown } from "react-icons/ai"
+import { FaCode } from "react-icons/fa";
 
 import CourseSubSectionAccordion from "./CourseSubSectionAccordion"
 
@@ -17,7 +18,7 @@ export default function CourseAccordionBar({ course, isActive, handleActive }) {
   }, [active])
 
   return (
-    <div className="overflow-hidden border border-solid border-richblack-600 bg-richblack-700 text-richblack-5 last:mb-0">
+    <div className="overflow-hidden  bg-richblack-900 border border-orange-600 text-richblack-5 last:mb-0">
       <div>
         <div
           className={`flex cursor-pointer items-start justify-between bg-opacity-20 px-7  py-6 transition-[0.3s]`}
@@ -33,10 +34,17 @@ export default function CourseAccordionBar({ course, isActive, handleActive }) {
             >
               <AiOutlineDown />
             </i>
+            <div class="flex-shrink-0 w-10 h-10 bg-red-500/30 rounded-lg flex items-center justify-center text-red-500">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-code-xml h-5 w-5"> 
+              <path d="m18 16 4-4-4-4"></path>
+              <path d="m6 8-4 4 4 4"></path>
+              <path d="m14.5 4-5 16"></path>
+            </svg>
+            </div>
             <p>{course?.sectionName}</p>
           </div>
-          <div className="space-x-4">
-            <span className="text-yellow-25">
+          <div className="space-x-4 flex">
+            <span className="text-orange-700">
               {`${course.subSection.length || 0} lecture(s)`}
             </span>
           </div>
@@ -49,7 +57,7 @@ export default function CourseAccordionBar({ course, isActive, handleActive }) {
           height: sectionHeight,
         }}
       >
-        <div className="text-textHead flex flex-col gap-2 px-7 py-6 font-semibold">
+        <div className="text-textHead flex flex-col border border-orange-600 gap-2 px-7 py-6 font-semibold">
           {course?.subSection?.map((subSec, i) => {
             return <CourseSubSectionAccordion subSec={subSec} key={i} />
           })}
@@ -58,3 +66,6 @@ export default function CourseAccordionBar({ course, isActive, handleActive }) {
     </div>
   )
 }
+
+
+

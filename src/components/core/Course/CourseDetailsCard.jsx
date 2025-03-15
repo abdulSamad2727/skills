@@ -66,7 +66,9 @@ function CourseDetailsCard({ course, setConfirmationModal, handleBuyCourse }) {
           </div>
           <div className="flex flex-col gap-4">
             <button
-              className="yellowButton"
+              className="yellowButton rounded-lg relative inline-flex items-center justify-center px-4 py-2.5 m-1 cursor-pointer border-b-2 border-l-2 border-r-2 
+               active:border-orange-700 active:shadow-none shadow-lg bg-gradient-to-tr from-orange-600 to-orange-500
+                hover:from-orange-500 hover:to-orange-500  border-orange-700 text-white"
               onClick={
                 user && course?.studentsEnrolled.includes(user?._id)
                   ? () => navigate("/dashboard/enrolled-courses")
@@ -78,7 +80,9 @@ function CourseDetailsCard({ course, setConfirmationModal, handleBuyCourse }) {
                 : "Buy Now"}
             </button>
             {(!user || !course?.studentsEnrolled.includes(user?._id)) && (
-              <button onClick={handleAddToCart} className="blackButton">
+              <button onClick={handleAddToCart} className="blackButton rounded-lg relative inline-flex items-center justify-center px-4 py-2.5 m-1 cursor-pointer border-b-2 border-l-2 border-r-2 
+               active:border-orange-700 active:shadow-none shadow-lg bg-gradient-to-tr from-orange-600 to-orange-500
+                hover:from-orange-500 hover:to-orange-500  border-orange-700 text-white">
                 Add to Cart
               </button>
             )}
@@ -106,7 +110,7 @@ function CourseDetailsCard({ course, setConfirmationModal, handleBuyCourse }) {
           </div>
           <div className="text-center">
             <button
-              className="mx-auto flex items-center gap-2 py-6 text-yellow-100 "
+              className="mx-auto flex items-center gap-2 py-6 text-orange-700 "
               onClick={handleShare}
             >
               <FaShareSquare size={15} /> Share
@@ -119,3 +123,6 @@ function CourseDetailsCard({ course, setConfirmationModal, handleBuyCourse }) {
 }
 
 export default CourseDetailsCard
+
+
+
