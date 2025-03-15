@@ -1,15 +1,18 @@
 import loginImg from "../assets/Images/login.webp"
+import { LampDemo } from "../components/aceternity/LampDemo"
 import Template from "../components/core/Auth/Template"
 
 function Login() {
   return (
+    <div className="flex flex-col">
     <Template
       title="Welcome Back"
-      description1="Build skills for today, tomorrow, and beyond."
-      description2="Education to future-proof your career."
+      description1="Secure Access Made Simple. "
+      description2="Pick your preferred login method.."
       image={loginImg}
       formType="login"
     />
+    </div>
   )
 }
 

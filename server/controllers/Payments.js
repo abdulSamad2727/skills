@@ -1,6 +1,5 @@
 const { instance } = require("../config/razorpay")
 
-
 const Course = require("../models/Course")
 const crypto = require("crypto")
 const User = require("../models/User")
@@ -168,7 +167,7 @@ exports.sendPaymentSuccessEmail = async (req, res) => {
 }
 
 // enroll the student in the courses
-const enrollStudents = async (courseid, userId ) => {
+const enrollStudents = async (courseid, userId) => {
   if (!courseid || !userId) {
     return res
       .status(400)
@@ -187,9 +186,7 @@ const enrollStudents = async (courseid, userId ) => {
       )
 
       if (!enrolledCourse) {
-        return res
-          .status(500)
-          .json({ success: false, error: "Course not found" })
+        return res.status(500).json({ success: false, error: "Course not found" })
       }
       console.log("Updated course: ", enrolledCourse)
 

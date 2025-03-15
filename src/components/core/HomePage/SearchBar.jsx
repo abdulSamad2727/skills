@@ -23,7 +23,7 @@ const SearchBar = () => {
 
         if (Array.isArray(courses)) {
           const filteredCourses = courses.filter((course) =>
-            course.courseName.toLowerCase().includes(word.toLowerCase().trim())
+            course.courseName.toLowerCase().startsWith(word.toLowerCase().trim())
           );
           setCourse(filteredCourses); // Update course list
         } else {
@@ -43,7 +43,7 @@ const SearchBar = () => {
   }, [word]);
 
   return (
-    <div className="relative">
+    <div className="relative text-black">
       <form className="flex mt-5 items-center max-w-lg mx-auto">
         <label htmlFor="voice-search" className="sr-only">Search</label>
         <div className="relative w-full">
@@ -74,7 +74,7 @@ const SearchBar = () => {
                 {course.map((course, index) => (
                   <Link key={index} to={`/courses/${course._id}`}>
                     <div className="bg-white-200 p-2 rounded-lg hover:bg-gray-300 transition-all">
-                      <p className="font-semibold">{course.courseName}</p>
+                      <p className="font-semibold text-black">{course.courseName}</p>
                     </div>
                   </Link>
                 ))}
