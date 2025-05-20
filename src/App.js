@@ -28,7 +28,7 @@ import Contact from "./pages/Contact";
 import Dashboard from "./pages/Dashboard";
 import AddCourse from "./components/core/Dashboard/AddCourse";
 import MyCourses from "./components/core/Dashboard/MyCourses";
-import EditCourse from "./components/core/Dashboard/EditCourse.jsx";
+import EditCourse from "./components/core/Dashboard/EditCourse";
 import Catalog from "./pages/Catalog.jsx";
 import Chat from "./pages/Chat.jsx";
 import CourseDetails from "./pages/CourseDetails.jsx";
@@ -127,13 +127,18 @@ function App() {
         >
           <Route path="dashboard/my-profile" element={<MyProfile />} />
           <Route path="dashboard/settings" element={<Settings />} />
-          {user?.accountType === ACCOUNT_TYPE.STUDENT && (
+          {user && (
             <>
               <Route path="dashboard/cart" element={<Cart />} />
+
+
+
               <Route
                 path="dashboard/enrolled-courses"
                 element={<EnrolledCourses />}
               />
+
+
             </>
           )}
 
